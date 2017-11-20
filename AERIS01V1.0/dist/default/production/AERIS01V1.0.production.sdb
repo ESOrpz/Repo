@@ -1,0 +1,221 @@
+[p LITE_MODE AUTOSTATIC PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F688 ]
+[d frameptr 6 ]
+"62 D:\XC8\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 D:\XC8\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 D:\XC8\sources\pic\eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
+"22 E:\Git\Git\Repo\AERIS01V1.0\sources/SUP_func.c
+[v _main main `(v  1 e 1 0 ]
+"31
+[v _SUP_Init SUP_Init `(v  1 e 1 0 ]
+"49
+[v _SUP_Oper SUP_Oper `(v  1 e 1 0 ]
+"17 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_adc.c
+[v _init_adc init_adc `(v  1 e 1 0 ]
+"17 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_io.c
+[v _init_io init_io `(v  1 e 1 0 ]
+"17 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_osc.c
+[v _init_osc init_osc `(v  1 e 1 0 ]
+"17 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_trm0.c
+[v _init_tmr0 init_tmr0 `(v  1 e 1 0 ]
+"17 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_uart.c
+[v _init_uart init_uart `(v  1 e 1 0 ]
+"57 D:\XC8\include\pic16f688.h
+[v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
+[s S214 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+]
+"179
+[u S221 . 1 `S214 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES221  1 e 1 @5 ]
+[s S47 . 1 `uc 1 RAIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 RAIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"307
+[s S56 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S61 . 1 `S47 1 . 1 0 `S56 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES61  1 e 1 @11 ]
+[s S371 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TXIF 1 0 :1:1 
+`uc 1 OSFIF 1 0 :1:2 
+`uc 1 C1IF 1 0 :1:3 
+`uc 1 C2IF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 EEIF 1 0 :1:7 
+]
+"382
+[s S380 . 1 `uc 1 T1IF 1 0 :1:0 
+]
+[u S382 . 1 `S371 1 . 1 0 `S380 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES382  1 e 1 @12 ]
+"596
+[v _SPBRG SPBRG `VEuc  1 e 1 @19 ]
+[s S250 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"696
+[u S259 . 1 `S250 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES259  1 e 1 @23 ]
+[s S281 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :3:2 
+`uc 1 . 1 0 :1:5 
+`uc 1 VCFG 1 0 :1:6 
+`uc 1 ADFM 1 0 :1:7 
+]
+"927
+[s S288 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+]
+[s S294 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S297 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[u S300 . 1 `S281 1 . 1 0 `S288 1 . 1 0 `S294 1 . 1 0 `S297 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES300  1 e 1 @31 ]
+[s S126 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nRAPU 1 0 :1:7 
+]
+"1007
+[s S133 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+]
+[u S137 . 1 `S126 1 . 1 0 `S133 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES137  1 e 1 @129 ]
+[s S197 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+]
+"1072
+[u S204 . 1 `S197 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES204  1 e 1 @133 ]
+[s S180 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+]
+"1122
+[u S187 . 1 `S180 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES187  1 e 1 @135 ]
+[s S345 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TXIE 1 0 :1:1 
+`uc 1 OSFIE 1 0 :1:2 
+`uc 1 C1IE 1 0 :1:3 
+`uc 1 C2IE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 EEIE 1 0 :1:7 
+]
+"1177
+[s S354 . 1 `uc 1 T1IE 1 0 :1:0 
+]
+[u S356 . 1 `S345 1 . 1 0 `S354 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES356  1 e 1 @140 ]
+[s S95 . 1 `uc 1 SCS 1 0 :1:0 
+`uc 1 LTS 1 0 :1:1 
+`uc 1 HTS 1 0 :1:2 
+`uc 1 OSTS 1 0 :1:3 
+`uc 1 IOSCF 1 0 :3:4 
+]
+"1294
+[s S101 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+`uc 1 IRCF2 1 0 :1:6 
+]
+[u S106 . 1 `S95 1 . 1 0 `S101 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES106  1 e 1 @143 ]
+[s S325 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 ADCS 1 0 :3:4 
+]
+"1976
+[s S328 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 ADCS0 1 0 :1:4 
+`uc 1 ADCS1 1 0 :1:5 
+`uc 1 ADCS2 1 0 :1:6 
+]
+[u S333 . 1 `S325 1 . 1 0 `S328 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES333  1 e 1 @159 ]
+"22 E:\Git\Git\Repo\AERIS01V1.0\sources/SUP_func.c
+[v _main main `(v  1 e 1 0 ]
+{
+"29
+} 0
+"49
+[v _SUP_Oper SUP_Oper `(v  1 e 1 0 ]
+{
+"54
+} 0
+"31
+[v _SUP_Init SUP_Init `(v  1 e 1 0 ]
+{
+"47
+} 0
+"17 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_uart.c
+[v _init_uart init_uart `(v  1 e 1 0 ]
+{
+"26
+} 0
+"17 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_trm0.c
+[v _init_tmr0 init_tmr0 `(v  1 e 1 0 ]
+{
+"27
+} 0
+"17 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_osc.c
+[v _init_osc init_osc `(v  1 e 1 0 ]
+{
+"22
+} 0
+"17 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_io.c
+[v _init_io init_io `(v  1 e 1 0 ]
+{
+"26
+} 0
+"17 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_adc.c
+[v _init_adc init_adc `(v  1 e 1 0 ]
+{
+"28
+} 0
