@@ -1,5 +1,5 @@
-sources/SUP_func.d sources/SUP_func.o: ../sources/SUP_func.c \
- ../sources/SUP_func.h \
+sources/SYS_io.d sources/SYS_io.o: ../sources/SYS_io.c \
+ ../sources/SYS_io.h ../sources/SUP_func.h \
  d:\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  d:\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -11,8 +11,9 @@ sources/SUP_func.d sources/SUP_func.o: ../sources/SUP_func.c \
  d:\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  d:\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  d:\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- d:\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- ../sources/SYS_io.h
+ d:\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h
+
+../sources/SYS_io.h:
 
 ../sources/SUP_func.h:
 
@@ -39,5 +40,3 @@ d:\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h
 d:\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
 d:\atmel\ studio\ 7\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
-
-../sources/SYS_io.h:
