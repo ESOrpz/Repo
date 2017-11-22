@@ -12,7 +12,6 @@
  */
 
 #include "SYS_uart.h"
-#include "SUP_func.h"
 
 void init_uart ()
 {

@@ -1,27 +1,26 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "993 D:\XC8\include\pic16f688.h
-[s S42 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S42 . PS PSA T0SE T0CS INTEDG nRAPU ]
+[s S43 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S43 . PS PSA T0SE T0CS INTEDG nRAPU ]
 "1001
-[s S43 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S43 . PS0 PS1 PS2 ]
+[s S44 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S44 . PS0 PS1 PS2 ]
 "992
-[u S41 `S42 1 `S43 1 ]
-[n S41 . . . ]
+[u S42 `S43 1 `S44 1 ]
+[n S42 . . . ]
 "1007
-[v _OPTION_REGbits `VS41 ~T0 @X0 0 e@129 ]
+[v _OPTION_REGbits `VS42 ~T0 @X0 0 e@129 ]
 "290
-[s S12 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S12 . RAIF INTF T0IF RAIE INTE T0IE PEIE GIE ]
+[s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S13 . RAIF INTF T0IF RAIE INTE T0IE PEIE GIE ]
 "300
-[s S13 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S13 . . TMR0IF . TMR0IE ]
+[s S14 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S14 . . TMR0IF . TMR0IE ]
 "289
-[u S11 `S12 1 `S13 1 ]
-[n S11 . . . ]
+[u S12 `S13 1 `S14 1 ]
+[n S12 . . . ]
 "307
-[v _INTCONbits `VS11 ~T0 @X0 0 e@11 ]
-[; ;SYS_tmr0.h: 24: void init_tmr0 ();
+[v _INTCONbits `VS12 ~T0 @X0 0 e@11 ]
 "24 sources/SUP_func.h
 [p x FOSC=INTOSCIO ]
 "25
@@ -40,6 +39,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x IESO=ON ]
 "32
 [p x FCMEN=ON ]
+[; ;SUP_func.h: 54: typedef unsigned char boolean;
+[; ;SUP_func.h: 55: typedef unsigned char uint8;
+[; ;SUP_func.h: 56: typedef unsigned int uint16;
+[; ;SUP_func.h: 57: typedef unsigned long uint32;
+[; ;SUP_func.h: 58: typedef struct
+[; ;SUP_func.h: 59: {
+[; ;SUP_func.h: 60: uint16 data;
+[; ;SUP_func.h: 61: uint32 time;
+[; ;SUP_func.h: 62: }sBUF;
+[; ;SUP_func.h: 74: void SUP_Init();
+[; ;SUP_func.h: 75: void SUP_Oper();
+[; ;SUP_func.h: 76: void SUP_ADC_management();
+[; ;SUP_func.h: 77: void SUP_UART_management();
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -877,51 +889,44 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
-[; ;SYS_osc.h: 24: void init_osc ();
-[; ;SYS_io.h: 24: void init_io ();
-[; ;SYS_uart.h: 24: void init_uart ();
-[; ;SYS_adc.h: 31: void init_adc ();
-[; ;SUP_func.h: 64: typedef unsigned char boolean;
-[; ;SUP_func.h: 65: typedef unsigned char uint8;
-[; ;SUP_func.h: 66: typedef unsigned int uint16;
-[; ;SUP_func.h: 67: typedef unsigned long uint32;
-[; ;SUP_func.h: 68: typedef struct
-[; ;SUP_func.h: 69: {
-[; ;SUP_func.h: 70: uint16 data;
-[; ;SUP_func.h: 71: uint32 time;
-[; ;SUP_func.h: 72: }sBUF;
-[; ;SUP_func.h: 84: void SUP_Init();
-[; ;SUP_func.h: 85: void SUP_Oper();
-"17 sources/SYS_trm0.c
+[; ;SYS_osc.h: 29: void init_osc ();
+[; ;SYS_io.h: 29: void init_io ();
+[; ;SYS_uart.h: 29: void init_uart ();
+[; ;SYS_adc.h: 36: extern volatile uint8 endConv;
+[; ;SYS_adc.h: 41: void init_adc ();
+[; ;SYS_adc.h: 42: void ADC_chan_change (uint8 ANChannel);
+[; ;SYS_adc.h: 43: uint16 ADC_get_value();
+[; ;SYS_tmr0.h: 29: void init_tmr0 ();
+"16 sources/SYS_trm0.c
 [v _init_tmr0 `(v ~T0 @X0 1 ef ]
-"18
+"17
 {
-[; ;SYS_trm0.c: 17: void init_tmr0 ()
-[; ;SYS_trm0.c: 18: {
+[; ;SYS_trm0.c: 16: void init_tmr0 ()
+[; ;SYS_trm0.c: 17: {
 [e :U _init_tmr0 ]
 [f ]
-[; ;SYS_trm0.c: 19: OPTION_REGbits.T0CS = 0;
-"19
+[; ;SYS_trm0.c: 18: OPTION_REGbits.T0CS = 0;
+"18
 [e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
-[; ;SYS_trm0.c: 20: OPTION_REGbits.PSA = 0;
-"20
+[; ;SYS_trm0.c: 19: OPTION_REGbits.PSA = 0;
+"19
 [e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
-[; ;SYS_trm0.c: 21: OPTION_REGbits.PS2 = 0;
-"21
+[; ;SYS_trm0.c: 20: OPTION_REGbits.PS2 = 0;
+"20
 [e = . . _OPTION_REGbits 1 2 -> -> 0 `i `uc ]
-[; ;SYS_trm0.c: 22: OPTION_REGbits.PS1 = 1;
-"22
+[; ;SYS_trm0.c: 21: OPTION_REGbits.PS1 = 1;
+"21
 [e = . . _OPTION_REGbits 1 1 -> -> 1 `i `uc ]
-[; ;SYS_trm0.c: 23: OPTION_REGbits.PS0 = 0;
-"23
+[; ;SYS_trm0.c: 22: OPTION_REGbits.PS0 = 0;
+"22
 [e = . . _OPTION_REGbits 1 0 -> -> 0 `i `uc ]
-[; ;SYS_trm0.c: 25: INTCONbits.T0IE = 1;
-"25
+[; ;SYS_trm0.c: 24: INTCONbits.T0IE = 1;
+"24
 [e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-[; ;SYS_trm0.c: 26: INTCONbits.T0IF = 0;
-"26
+[; ;SYS_trm0.c: 25: INTCONbits.T0IF = 0;
+"25
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-[; ;SYS_trm0.c: 27: }
-"27
+[; ;SYS_trm0.c: 26: }
+"26
 [e :UE 87 ]
 }

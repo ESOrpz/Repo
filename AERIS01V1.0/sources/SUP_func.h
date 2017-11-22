@@ -17,7 +17,7 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-    
+  
 /**************************************
  Configuration bits                    
 **************************************/
@@ -30,16 +30,6 @@ extern "C" {
 #pragma config BOREN = ON       // Brown Out Detect (BOR enabled)
 #pragma config IESO = ON        // Internal External Switchover bit (Internal External Switchover mode is enabled)
 #pragma config FCMEN = ON       // Fail-Safe Clock Monitor Enabled bit (Fail-Safe Clock Monitor is enabled)
-    
-/**************************************
- Includes               
-**************************************/
-#include <xc.h>
-#include "SYS_osc.h"
-#include "SYS_tmr0.h"
-#include "SYS_io.h"
-#include "SYS_uart.h"
-#include "SYS_adc.h"
 
 /**************************************
  Timing                   
@@ -83,6 +73,18 @@ typedef struct
 **************************************/
 void SUP_Init();
 void SUP_Oper();
+void SUP_ADC_management();
+void SUP_UART_management();
+
+/**************************************
+ Includes               
+**************************************/
+#include <xc.h>
+#include "SYS_osc.h"
+#include "SYS_tmr0.h"
+#include "SYS_io.h"
+#include "SYS_uart.h"
+#include "SYS_adc.h"
 
 #ifdef	__cplusplus
 }

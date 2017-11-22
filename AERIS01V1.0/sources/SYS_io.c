@@ -12,7 +12,6 @@
  */
 
 #include "SYS_io.h"
-#include "SUP_func.h"
 
 void init_io ()
 {

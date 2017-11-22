@@ -1,32 +1,43 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"59 sources/SUP_func.h
+[s S1 `ui 1 `ul 1 ]
+[n S1 . data time ]
 [p mainexit ]
-"84 sources/SUP_func.h
+"74
 [v _SUP_Init `(v ~T0 @X0 0 ef ]
-"85
+"75
 [v _SUP_Oper `(v ~T0 @X0 0 ef ]
-"24 sources/SYS_osc.h
+"29 sources/SYS_osc.h
 [v _init_osc `(v ~T0 @X0 0 ef ]
-"24 sources/SYS_tmr0.h
+"29 sources/SYS_tmr0.h
 [v _init_tmr0 `(v ~T0 @X0 0 ef ]
-"24 sources/SYS_io.h
+"29 sources/SYS_io.h
 [v _init_io `(v ~T0 @X0 0 ef ]
-"24 sources/SYS_uart.h
+"29 sources/SYS_uart.h
 [v _init_uart `(v ~T0 @X0 0 ef ]
-"31 sources/SYS_adc.h
+"41 sources/SYS_adc.h
 [v _init_adc `(v ~T0 @X0 0 ef ]
 "290 D:\XC8\include\pic16f688.h
-[s S12 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S12 . RAIF INTF T0IF RAIE INTE T0IE PEIE GIE ]
+[s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S13 . RAIF INTF T0IF RAIE INTE T0IE PEIE GIE ]
 "300
-[s S13 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S13 . . TMR0IF . TMR0IE ]
+[s S14 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S14 . . TMR0IF . TMR0IE ]
 "289
-[u S11 `S12 1 `S13 1 ]
-[n S11 . . . ]
+[u S12 `S13 1 `S14 1 ]
+[n S12 . . . ]
 "307
-[v _INTCONbits `VS11 ~T0 @X0 0 e@11 ]
+[v _INTCONbits `VS12 ~T0 @X0 0 e@11 ]
 "57
 [v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
+"76 sources/SUP_func.h
+[v _SUP_ADC_management `(v ~T0 @X0 0 ef ]
+"77
+[v _SUP_UART_management `(v ~T0 @X0 0 ef ]
+"43 sources/SYS_adc.h
+[v _ADC_get_value `(ui ~T0 @X0 0 ef ]
+"42
+[v _ADC_chan_change `(v ~T0 @X0 0 ef1`uc ]
 "24 sources/SUP_func.h
 [p x FOSC=INTOSCIO ]
 "25
@@ -45,6 +56,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x IESO=ON ]
 "32
 [p x FCMEN=ON ]
+[; ;SUP_func.h: 54: typedef unsigned char boolean;
+[; ;SUP_func.h: 55: typedef unsigned char uint8;
+[; ;SUP_func.h: 56: typedef unsigned int uint16;
+[; ;SUP_func.h: 57: typedef unsigned long uint32;
+[; ;SUP_func.h: 58: typedef struct
+[; ;SUP_func.h: 59: {
+[; ;SUP_func.h: 60: uint16 data;
+[; ;SUP_func.h: 61: uint32 time;
+[; ;SUP_func.h: 62: }sBUF;
+[; ;SUP_func.h: 74: void SUP_Init();
+[; ;SUP_func.h: 75: void SUP_Oper();
+[; ;SUP_func.h: 76: void SUP_ADC_management();
+[; ;SUP_func.h: 77: void SUP_UART_management();
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -882,100 +906,258 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
-[; ;SYS_osc.h: 24: void init_osc ();
-[; ;SYS_tmr0.h: 24: void init_tmr0 ();
-[; ;SYS_io.h: 24: void init_io ();
-[; ;SYS_uart.h: 24: void init_uart ();
-[; ;SYS_adc.h: 31: void init_adc ();
-[; ;SUP_func.h: 64: typedef unsigned char boolean;
-[; ;SUP_func.h: 65: typedef unsigned char uint8;
-[; ;SUP_func.h: 66: typedef unsigned int uint16;
-[; ;SUP_func.h: 67: typedef unsigned long uint32;
-[; ;SUP_func.h: 68: typedef struct
-[; ;SUP_func.h: 69: {
-[; ;SUP_func.h: 70: uint16 data;
-[; ;SUP_func.h: 71: uint32 time;
-[; ;SUP_func.h: 72: }sBUF;
-[; ;SUP_func.h: 84: void SUP_Init();
-[; ;SUP_func.h: 85: void SUP_Oper();
+[; ;SYS_osc.h: 29: void init_osc ();
+[; ;SYS_tmr0.h: 29: void init_tmr0 ();
+[; ;SYS_io.h: 29: void init_io ();
+[; ;SYS_uart.h: 29: void init_uart ();
+[; ;SYS_adc.h: 36: extern volatile uint8 endConv;
+[; ;SYS_adc.h: 41: void init_adc ();
+[; ;SYS_adc.h: 42: void ADC_chan_change (uint8 ANChannel);
+[; ;SYS_adc.h: 43: uint16 ADC_get_value();
+"23 sources/SUP_func.c
+[v _compteur `Vul ~T0 @X0 1 s ]
+[i _compteur
+-> -> -> 0 `i `l `ul
+]
+[; ;SUP_func.c: 23: static volatile uint32 compteur = 0;
+"24
+[v _anData `S1 ~T0 @X0 -> 3 `i s ]
+[; ;SUP_func.c: 24: static sBUF anData[3];
 [v $root$_main `(v ~T0 @X0 0 e ]
-"22 sources/SUP_func.c
+"26
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;SUP_func.c: 22: void main(void) {
+[; ;SUP_func.c: 26: void main(void) {
 [e :U _main ]
 [f ]
-[; ;SUP_func.c: 24: SUP_Init();
-"24
-[e ( _SUP_Init ..  ]
-[; ;SUP_func.c: 26: SUP_Oper();
-"26
-[e ( _SUP_Oper ..  ]
-[; ;SUP_func.c: 28: return;
+[; ;SUP_func.c: 28: SUP_Init();
 "28
+[e ( _SUP_Init ..  ]
+[; ;SUP_func.c: 30: SUP_Oper();
+"30
+[e ( _SUP_Oper ..  ]
+[; ;SUP_func.c: 32: return;
+"32
 [e $UE 87  ]
-[; ;SUP_func.c: 29: }
-"29
+[; ;SUP_func.c: 33: }
+"33
 [e :UE 87 ]
 }
-"31
+"35
 [v _SUP_Init `(v ~T0 @X0 1 ef ]
-"32
+"36
 {
-[; ;SUP_func.c: 31: void SUP_Init()
-[; ;SUP_func.c: 32: {
+[; ;SUP_func.c: 35: void SUP_Init()
+[; ;SUP_func.c: 36: {
 [e :U _SUP_Init ]
 [f ]
-[; ;SUP_func.c: 33: init_osc ();
-"33
-[e ( _init_osc ..  ]
-[; ;SUP_func.c: 35: init_tmr0 ();
-"35
-[e ( _init_tmr0 ..  ]
-[; ;SUP_func.c: 37: init_io ();
+[; ;SUP_func.c: 37: init_osc ();
 "37
-[e ( _init_io ..  ]
-[; ;SUP_func.c: 39: init_uart ();
+[e ( _init_osc ..  ]
+[; ;SUP_func.c: 39: init_tmr0 ();
 "39
-[e ( _init_uart ..  ]
-[; ;SUP_func.c: 41: init_adc ();
+[e ( _init_tmr0 ..  ]
+[; ;SUP_func.c: 41: init_io ();
 "41
-[e ( _init_adc ..  ]
-[; ;SUP_func.c: 43: INTCONbits.GIE = 1;
+[e ( _init_io ..  ]
+[; ;SUP_func.c: 43: init_uart ();
 "43
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-[; ;SUP_func.c: 44: INTCONbits.PEIE = 1;
-"44
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-[; ;SUP_func.c: 46: TMR0 = 0xE6;
-"46
-[e = _TMR0 -> -> 230 `i `uc ]
-[; ;SUP_func.c: 47: }
+[e ( _init_uart ..  ]
+[; ;SUP_func.c: 45: init_adc ();
+"45
+[e ( _init_adc ..  ]
+[; ;SUP_func.c: 47: INTCONbits.GIE = 1;
 "47
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;SUP_func.c: 48: INTCONbits.PEIE = 1;
+"48
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;SUP_func.c: 50: TMR0 = 0xE6;
+"50
+[e = _TMR0 -> -> 230 `i `uc ]
+[; ;SUP_func.c: 51: }
+"51
 [e :UE 88 ]
 }
-"49
+"53
 [v _SUP_Oper `(v ~T0 @X0 1 ef ]
-"50
+"54
 {
-[; ;SUP_func.c: 49: void SUP_Oper()
-[; ;SUP_func.c: 50: {
+[; ;SUP_func.c: 53: void SUP_Oper()
+[; ;SUP_func.c: 54: {
 [e :U _SUP_Oper ]
 [f ]
-[; ;SUP_func.c: 51: while(1)
-"51
+"55
+[v _latchSequencer `ul ~T0 @X0 1 a ]
+[; ;SUP_func.c: 55: uint32 latchSequencer = compteur;
+[e = _latchSequencer _compteur ]
+[; ;SUP_func.c: 57: while(1)
+"57
 [e :U 91 ]
-[; ;SUP_func.c: 52: {
-"52
+[; ;SUP_func.c: 58: {
+"58
 {
-"53
+[; ;SUP_func.c: 59: while(latchSequencer >= compteur);
+"59
+[e $U 93  ]
+[e :U 94 ]
+[e :U 93 ]
+[e $ >= _latchSequencer _compteur 94  ]
+[e :U 95 ]
+[; ;SUP_func.c: 60: latchSequencer = compteur;
+"60
+[e = _latchSequencer _compteur ]
+[; ;SUP_func.c: 62: SUP_ADC_management();
+"62
+[e ( _SUP_ADC_management ..  ]
+[; ;SUP_func.c: 64: SUP_UART_management();
+"64
+[e ( _SUP_UART_management ..  ]
+"65
 }
 [e :U 90 ]
-"51
+"57
 [e $U 91  ]
 [e :U 92 ]
-[; ;SUP_func.c: 53: }
-[; ;SUP_func.c: 54: }
-"54
+[; ;SUP_func.c: 65: }
+[; ;SUP_func.c: 66: }
+"66
 [e :UE 89 ]
+}
+"68
+[v _SUP_ADC_management `(v ~T0 @X0 1 ef ]
+"69
+{
+[; ;SUP_func.c: 68: void SUP_ADC_management ()
+[; ;SUP_func.c: 69: {
+[e :U _SUP_ADC_management ]
+[f ]
+"70
+[v _sequence `uc ~T0 @X0 1 a ]
+[; ;SUP_func.c: 70: uint8 sequence = 0;
+[e = _sequence -> -> 0 `i `uc ]
+[; ;SUP_func.c: 72: switch(sequence++)
+"72
+[e $U 98  ]
+[; ;SUP_func.c: 73: {
+"73
+{
+[; ;SUP_func.c: 74: case 0:
+"74
+[e :U 99 ]
+[; ;SUP_func.c: 75: anData[0].time = compteur;
+"75
+[e = . *U + &U _anData * -> -> -> 0 `i `ui `ux -> -> # *U &U _anData `ui `ux 1 _compteur ]
+[; ;SUP_func.c: 76: anData[0].data = ADC_get_value();
+"76
+[e = . *U + &U _anData * -> -> -> 0 `i `ui `ux -> -> # *U &U _anData `ui `ux 0 ( _ADC_get_value ..  ]
+[; ;SUP_func.c: 77: ADC_chan_change(0b101);
+"77
+[e ( _ADC_chan_change (1 -> -> 5 `i `uc ]
+[; ;SUP_func.c: 78: break;
+"78
+[e $U 97  ]
+[; ;SUP_func.c: 80: case 1:
+"80
+[e :U 100 ]
+[; ;SUP_func.c: 81: anData[1].time = compteur;
+"81
+[e = . *U + &U _anData * -> -> -> 1 `i `ui `ux -> -> # *U &U _anData `ui `ux 1 _compteur ]
+[; ;SUP_func.c: 82: anData[1].data = ADC_get_value();
+"82
+[e = . *U + &U _anData * -> -> -> 1 `i `ui `ux -> -> # *U &U _anData `ui `ux 0 ( _ADC_get_value ..  ]
+[; ;SUP_func.c: 83: ADC_chan_change(0b110);
+"83
+[e ( _ADC_chan_change (1 -> -> 6 `i `uc ]
+[; ;SUP_func.c: 84: break;
+"84
+[e $U 97  ]
+[; ;SUP_func.c: 86: case 2:
+"86
+[e :U 101 ]
+[; ;SUP_func.c: 87: anData[2].time = compteur;
+"87
+[e = . *U + &U _anData * -> -> -> 2 `i `ui `ux -> -> # *U &U _anData `ui `ux 1 _compteur ]
+[; ;SUP_func.c: 88: anData[2].data = ADC_get_value();
+"88
+[e = . *U + &U _anData * -> -> -> 2 `i `ui `ux -> -> # *U &U _anData `ui `ux 0 ( _ADC_get_value ..  ]
+[; ;SUP_func.c: 89: ADC_chan_change(0b100);
+"89
+[e ( _ADC_chan_change (1 -> -> 4 `i `uc ]
+[; ;SUP_func.c: 90: break;
+"90
+[e $U 97  ]
+[; ;SUP_func.c: 92: case 3:
+"92
+[e :U 102 ]
+[; ;SUP_func.c: 94: break;
+"94
+[e $U 97  ]
+[; ;SUP_func.c: 96: default:
+"96
+[e :U 103 ]
+[; ;SUP_func.c: 97: sequence = 0;
+"97
+[e = _sequence -> -> 0 `i `uc ]
+"98
+}
+[; ;SUP_func.c: 98: }
+[e $U 97  ]
+"72
+[e :U 98 ]
+[e [\ ++ _sequence -> -> 1 `i `uc , $ -> -> 0 `i `uc 99
+ , $ -> -> 1 `i `uc 100
+ , $ -> -> 2 `i `uc 101
+ , $ -> -> 3 `i `uc 102
+ 103 ]
+"98
+[e :U 97 ]
+[; ;SUP_func.c: 99: }
+"99
+[e :UE 96 ]
+}
+"101
+[v _SUP_UART_management `(v ~T0 @X0 1 ef ]
+"102
+{
+[; ;SUP_func.c: 101: void SUP_UART_management ()
+[; ;SUP_func.c: 102: {
+[e :U _SUP_UART_management ]
+[f ]
+[; ;SUP_func.c: 104: }
+"104
+[e :UE 104 ]
+}
+[v $root$_f_int `(v ~T0 @X0 0 e ]
+[v F924 `(v ~T0 @X0 1 tf ]
+"106
+[v _f_int `IF924 ~T0 @X0 1 e ]
+"107
+{
+[; ;SUP_func.c: 106: void interrupt f_int(void)
+[; ;SUP_func.c: 107: {
+[e :U _f_int ]
+[f ]
+[; ;SUP_func.c: 108: if(INTCONbits.T0IF)
+"108
+[e $ ! != -> . . _INTCONbits 0 2 `i -> -> -> 0 `i `Vuc `i 106  ]
+[; ;SUP_func.c: 109: {
+"109
+{
+[; ;SUP_func.c: 110: TMR0 = 0xE6;
+"110
+[e = _TMR0 -> -> 230 `i `uc ]
+[; ;SUP_func.c: 111: INTCONbits.T0IF = 0;
+"111
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;SUP_func.c: 112: compteur++;
+"112
+[e ++ _compteur -> -> -> 1 `i `l `ul ]
+"113
+}
+[e :U 106 ]
+[; ;SUP_func.c: 113: }
+[; ;SUP_func.c: 156: }
+"156
+[e :UE 105 ]
 }

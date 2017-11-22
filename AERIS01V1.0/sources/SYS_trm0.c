@@ -12,7 +12,6 @@
  */
 
 #include "SYS_tmr0.h"
-#include "SUP_func.h"
 
 void init_tmr0 ()
 {

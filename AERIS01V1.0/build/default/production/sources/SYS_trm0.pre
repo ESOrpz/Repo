@@ -1,9 +1,6 @@
 
 # 1 "sources/SYS_trm0.c"
 
-# 24 "sources/SYS_tmr0.h"
-void init_tmr0 ();
-
 
 # 24 "sources/SUP_func.h"
 #pragma config FOSC = INTOSCIO
@@ -15,6 +12,23 @@ void init_tmr0 ();
 #pragma config BOREN = ON
 #pragma config IESO = ON
 #pragma config FCMEN = ON
+
+# 54
+typedef unsigned char boolean;
+typedef unsigned char uint8;
+typedef unsigned int uint16;
+typedef unsigned long uint32;
+typedef struct
+{
+uint16 data;
+uint32 time;
+}sBUF;
+
+# 74
+void SUP_Init();
+void SUP_Oper();
+void SUP_ADC_management();
+void SUP_UART_management();
 
 # 26 "D:\XC8\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -1204,34 +1218,27 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
-# 24 "sources/SYS_osc.h"
+# 29 "sources/SYS_osc.h"
 void init_osc ();
 
-# 24 "sources/SYS_io.h"
+# 29 "sources/SYS_io.h"
 void init_io ();
 
-# 24 "sources/SYS_uart.h"
+# 29 "sources/SYS_uart.h"
 void init_uart ();
 
-# 31 "sources/SYS_adc.h"
+# 36 "sources/SYS_adc.h"
+extern volatile uint8 endConv;
+
+# 41
 void init_adc ();
+void ADC_chan_change (uint8 ANChannel);
+uint16 ADC_get_value();
 
-# 64 "sources/SUP_func.h"
-typedef unsigned char boolean;
-typedef unsigned char uint8;
-typedef unsigned int uint16;
-typedef unsigned long uint32;
-typedef struct
-{
-uint16 data;
-uint32 time;
-}sBUF;
+# 29 "sources/SYS_tmr0.h"
+void init_tmr0 ();
 
-# 84
-void SUP_Init();
-void SUP_Oper();
-
-# 17 "sources/SYS_trm0.c"
+# 16 "sources/SYS_trm0.c"
 void init_tmr0 ()
 {
 OPTION_REGbits.T0CS = 0;

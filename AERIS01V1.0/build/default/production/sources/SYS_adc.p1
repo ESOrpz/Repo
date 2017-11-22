@@ -1,55 +1,58 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "903 D:\XC8\include\pic16f688.h
-[s S37 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S37 . ADON GO_nDONE CHS . VCFG ADFM ]
+[s S38 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S38 . ADON GO_nDONE CHS . VCFG ADFM ]
 "911
-[s S38 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S38 . . GO CHS0 CHS1 CHS2 ]
+[s S39 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S39 . . GO CHS0 CHS1 CHS2 ]
 "918
-[s S39 :1 `uc 1 :1 `uc 1 ]
-[n S39 . . nDONE ]
-"922
 [s S40 :1 `uc 1 :1 `uc 1 ]
-[n S40 . . GO_DONE ]
+[n S40 . . nDONE ]
+"922
+[s S41 :1 `uc 1 :1 `uc 1 ]
+[n S41 . . GO_DONE ]
 "902
-[u S36 `S37 1 `S38 1 `S39 1 `S40 1 ]
-[n S36 . . . . . ]
+[u S37 `S38 1 `S39 1 `S40 1 `S41 1 ]
+[n S37 . . . . . ]
 "927
-[v _ADCON0bits `VS36 ~T0 @X0 0 e@31 ]
+[v _ADCON0bits `VS37 ~T0 @X0 0 e@31 ]
 "1965
-[s S84 :4 `uc 1 :3 `uc 1 ]
-[n S84 . . ADCS ]
+[s S85 :4 `uc 1 :3 `uc 1 ]
+[n S85 . . ADCS ]
 "1969
-[s S85 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S85 . . ADCS0 ADCS1 ADCS2 ]
+[s S86 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S86 . . ADCS0 ADCS1 ADCS2 ]
 "1964
-[u S83 `S84 1 `S85 1 ]
-[n S83 . . . ]
+[u S84 `S85 1 `S86 1 ]
+[n S84 . . . ]
 "1976
-[v _ADCON1bits `VS83 ~T0 @X0 0 e@159 ]
+[v _ADCON1bits `VS84 ~T0 @X0 0 e@159 ]
 "1163
-[s S49 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S49 . TMR1IE TXIE OSFIE C1IE C2IE RCIE ADIE EEIE ]
+[s S50 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S50 . TMR1IE TXIE OSFIE C1IE C2IE RCIE ADIE EEIE ]
 "1173
-[s S50 :1 `uc 1 ]
-[n S50 . T1IE ]
+[s S51 :1 `uc 1 ]
+[n S51 . T1IE ]
 "1162
-[u S48 `S49 1 `S50 1 ]
-[n S48 . . . ]
+[u S49 `S50 1 `S51 1 ]
+[n S49 . . . ]
 "1177
-[v _PIE1bits `VS48 ~T0 @X0 0 e@140 ]
+[v _PIE1bits `VS49 ~T0 @X0 0 e@140 ]
 "368
-[s S15 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S15 . TMR1IF TXIF OSFIF C1IF C2IF RCIF ADIF EEIF ]
+[s S16 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S16 . TMR1IF TXIF OSFIF C1IF C2IF RCIF ADIF EEIF ]
 "378
-[s S16 :1 `uc 1 ]
-[n S16 . T1IF ]
+[s S17 :1 `uc 1 ]
+[n S17 . T1IF ]
 "367
-[u S14 `S15 1 `S16 1 ]
-[n S14 . . . ]
+[u S15 `S16 1 `S17 1 ]
+[n S15 . . . ]
 "382
-[v _PIR1bits `VS14 ~T0 @X0 0 e@12 ]
-[; ;SYS_adc.h: 31: void init_adc ();
+[v _PIR1bits `VS15 ~T0 @X0 0 e@12 ]
+"1952
+[v _ADRESL `Vuc ~T0 @X0 0 e@158 ]
+"890
+[v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
 "24 sources/SUP_func.h
 [p x FOSC=INTOSCIO ]
 "25
@@ -68,6 +71,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x IESO=ON ]
 "32
 [p x FCMEN=ON ]
+[; ;SUP_func.h: 54: typedef unsigned char boolean;
+[; ;SUP_func.h: 55: typedef unsigned char uint8;
+[; ;SUP_func.h: 56: typedef unsigned int uint16;
+[; ;SUP_func.h: 57: typedef unsigned long uint32;
+[; ;SUP_func.h: 58: typedef struct
+[; ;SUP_func.h: 59: {
+[; ;SUP_func.h: 60: uint16 data;
+[; ;SUP_func.h: 61: uint32 time;
+[; ;SUP_func.h: 62: }sBUF;
+[; ;SUP_func.h: 74: void SUP_Init();
+[; ;SUP_func.h: 75: void SUP_Oper();
+[; ;SUP_func.h: 76: void SUP_ADC_management();
+[; ;SUP_func.h: 77: void SUP_UART_management();
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -905,54 +921,123 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
-[; ;SYS_osc.h: 24: void init_osc ();
-[; ;SYS_tmr0.h: 24: void init_tmr0 ();
-[; ;SYS_io.h: 24: void init_io ();
-[; ;SYS_uart.h: 24: void init_uart ();
-[; ;SUP_func.h: 64: typedef unsigned char boolean;
-[; ;SUP_func.h: 65: typedef unsigned char uint8;
-[; ;SUP_func.h: 66: typedef unsigned int uint16;
-[; ;SUP_func.h: 67: typedef unsigned long uint32;
-[; ;SUP_func.h: 68: typedef struct
-[; ;SUP_func.h: 69: {
-[; ;SUP_func.h: 70: uint16 data;
-[; ;SUP_func.h: 71: uint32 time;
-[; ;SUP_func.h: 72: }sBUF;
-[; ;SUP_func.h: 84: void SUP_Init();
-[; ;SUP_func.h: 85: void SUP_Oper();
-"17 sources/SYS_adc.c
-[v _init_adc `(v ~T0 @X0 1 ef ]
+[; ;SYS_osc.h: 29: void init_osc ();
+[; ;SYS_tmr0.h: 29: void init_tmr0 ();
+[; ;SYS_io.h: 29: void init_io ();
+[; ;SYS_uart.h: 29: void init_uart ();
+[; ;SYS_adc.h: 36: extern volatile uint8 endConv;
+[; ;SYS_adc.h: 41: void init_adc ();
+[; ;SYS_adc.h: 42: void ADC_chan_change (uint8 ANChannel);
+[; ;SYS_adc.h: 43: uint16 ADC_get_value();
+"16 sources/SYS_adc.c
+[v _endConv `Vuc ~T0 @X0 1 e ]
+[i _endConv
+-> -> 0 `i `uc
+]
+[; ;SYS_adc.c: 16: volatile uint8 endConv = 0;
 "18
+[v _init_adc `(v ~T0 @X0 1 ef ]
+"19
 {
-[; ;SYS_adc.c: 17: void init_adc ()
-[; ;SYS_adc.c: 18: {
+[; ;SYS_adc.c: 18: void init_adc ()
+[; ;SYS_adc.c: 19: {
 [e :U _init_adc ]
 [f ]
-[; ;SYS_adc.c: 19: ADCON0bits.ADFM = 1;
-"19
-[e = . . _ADCON0bits 0 5 -> -> 1 `i `uc ]
-[; ;SYS_adc.c: 20: ADCON0bits.CHS = 0b100;
+[; ;SYS_adc.c: 20: ADCON0bits.ADFM = 1;
 "20
-[e = . . _ADCON0bits 0 2 -> -> 4 `i `uc ]
-[; ;SYS_adc.c: 21: ADCON0bits.ADON = 1;
+[e = . . _ADCON0bits 0 5 -> -> 1 `i `uc ]
+[; ;SYS_adc.c: 21: ADCON0bits.CHS = 0b100;
 "21
-[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
-[; ;SYS_adc.c: 22: ADCON1bits.ADCS2 = 1;
+[e = . . _ADCON0bits 0 2 -> -> 4 `i `uc ]
+[; ;SYS_adc.c: 22: ADCON0bits.ADON = 1;
 "22
-[e = . . _ADCON1bits 1 3 -> -> 1 `i `uc ]
-[; ;SYS_adc.c: 23: ADCON1bits.ADCS1 = 0;
+[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
+[; ;SYS_adc.c: 23: ADCON1bits.ADCS2 = 1;
 "23
-[e = . . _ADCON1bits 1 2 -> -> 0 `i `uc ]
-[; ;SYS_adc.c: 24: ADCON1bits.ADCS0 = 1;
+[e = . . _ADCON1bits 1 3 -> -> 1 `i `uc ]
+[; ;SYS_adc.c: 24: ADCON1bits.ADCS1 = 0;
 "24
+[e = . . _ADCON1bits 1 2 -> -> 0 `i `uc ]
+[; ;SYS_adc.c: 25: ADCON1bits.ADCS0 = 1;
+"25
 [e = . . _ADCON1bits 1 1 -> -> 1 `i `uc ]
-[; ;SYS_adc.c: 26: PIE1bits.ADIE = 1;
-"26
-[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
-[; ;SYS_adc.c: 27: PIR1bits.ADIF = 0;
+[; ;SYS_adc.c: 27: PIE1bits.ADIE = 1;
 "27
-[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
-[; ;SYS_adc.c: 28: }
+[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
+[; ;SYS_adc.c: 28: PIR1bits.ADIF = 0;
 "28
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+[; ;SYS_adc.c: 29: }
+"29
 [e :UE 87 ]
+}
+"31
+[v _ADC_chan_change `(v ~T0 @X0 1 ef1`uc ]
+"32
+{
+[; ;SYS_adc.c: 31: void ADC_chan_change(uint8 ANChannel)
+[; ;SYS_adc.c: 32: {
+[e :U _ADC_chan_change ]
+"31
+[v _ANChannel `uc ~T0 @X0 1 r1 ]
+"32
+[f ]
+[; ;SYS_adc.c: 33: ADCON0bits.CHS = ANChannel;
+"33
+[e = . . _ADCON0bits 0 2 _ANChannel ]
+[; ;SYS_adc.c: 34: }
+"34
+[e :UE 88 ]
+}
+"36
+[v _ADC_get_value `(ui ~T0 @X0 1 ef ]
+"37
+{
+[; ;SYS_adc.c: 36: uint16 ADC_get_value()
+[; ;SYS_adc.c: 37: {
+[e :U _ADC_get_value ]
+[f ]
+"38
+[v _ANvalue `ui ~T0 @X0 1 a ]
+[; ;SYS_adc.c: 38: uint16 ANvalue = 0;
+[e = _ANvalue -> -> 0 `i `ui ]
+[; ;SYS_adc.c: 40: if(endConv)
+"40
+[e $ ! != -> _endConv `i -> -> -> 0 `i `Vuc `i 90  ]
+[; ;SYS_adc.c: 41: {
+"41
+{
+[; ;SYS_adc.c: 42: ANvalue = ADRESL;
+"42
+[e = _ANvalue -> _ADRESL `ui ]
+[; ;SYS_adc.c: 43: ANvalue += (ADRESH << 8);
+"43
+[e =+ _ANvalue -> << -> _ADRESH `i -> 8 `i `ui ]
+"45
+}
+[; ;SYS_adc.c: 45: }
+[e $U 91  ]
+"46
+[e :U 90 ]
+[; ;SYS_adc.c: 46: else
+[; ;SYS_adc.c: 47: {
+"47
+{
+[; ;SYS_adc.c: 48: PIR1bits.ADIF = 0;
+"48
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+[; ;SYS_adc.c: 49: ADCON0bits.GO = 1;
+"49
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+"50
+}
+[e :U 91 ]
+[; ;SYS_adc.c: 50: }
+[; ;SYS_adc.c: 52: return ANvalue;
+"52
+[e ) _ANvalue ]
+[e $UE 89  ]
+[; ;SYS_adc.c: 53: }
+"53
+[e :UE 89 ]
 }

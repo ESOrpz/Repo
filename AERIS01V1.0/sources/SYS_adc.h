@@ -19,6 +19,11 @@ extern "C" {
 #endif
 
 /**************************************
+ Includes               
+**************************************/
+#include "SUP_func.h"  
+    
+/**************************************
  Analog channels                   
 **************************************/
 #define AN4 0b100 //Pin 10 (RC0)
@@ -26,9 +31,16 @@ extern "C" {
 #define AN6 0b110 //Pin 8 (RC2)
     
 /**************************************
+ Global variables                  
+**************************************/
+extern volatile uint8 endConv;
+
+/**************************************
  Global functions               
 **************************************/
 void init_adc ();
+void ADC_chan_change (uint8 ANChannel);
+uint16 ADC_get_value();
 
 #ifdef	__cplusplus
 }

@@ -12,7 +12,6 @@
  */
 
 #include "SYS_osc.h"
-#include "SUP_func.h"
 
 void init_osc ()
 {
