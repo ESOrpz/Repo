@@ -13,13 +13,34 @@
 
 #include "SYS_uart.h"
 
+boolean tx_running = FALSE;
+uint8 tx_data[18];
+
 void init_uart ()
 {
-    RCSTAbits.SPEN = 1;
-    SPBRG = 0x0C;
-    
     /* Config for 115200 bauds
      SPBRG = 0x10;
      BAUDCTLbits.BRG16 = 1;
      TXSTAbits.BRGH = 1;*/
+    
+    /* Config for 9600 bauds
+     SPBRG = 0x0C;*/
+    
+    RCSTAbits.SPEN = 1;
+    SPBRG = 0x10;
+    BAUDCTLbits.BRG16 = 1;
+    TXSTAbits.BRGH = 1;
+    
+    PIE1bits.T1IE = 1;
+    TXSTAbits.TXEN = 1;
+}
+
+void UART_send(sBUF *data, uint8 size)
+{
+    memcpy(tx_data,data,size);
+    if(tx_data[17] < 0xFF)
+        TXREG = tx_data[17];
+    else
+        TXREG = 0xFE;
+    tx_running = TRUE;
 }

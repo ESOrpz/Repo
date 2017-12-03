@@ -7,27 +7,31 @@
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 "86 D:\XC8\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
+"27 D:\XC8\sources\common\memcpy.c
+[v _memcpy memcpy `(*.4v  1 e 1 0 ]
 "6 D:\XC8\sources\pic\eeprom.c
 [v _eecpymem eecpymem `(v  1 e 1 0 ]
 "39
 [v _memcpyee memcpyee `(v  1 e 1 0 ]
-"26 E:\Git\Git\Repo\AERIS01V1.0\sources/SUP_func.c
+"27 E:\Git\Git\Repo\AERIS01V1.0\sources/SUP_func.c
 [v _main main `(v  1 e 1 0 ]
-"35
+"36
 [v _SUP_Init SUP_Init `(v  1 e 1 0 ]
-"53
+"54
 [v _SUP_Oper SUP_Oper `(v  1 e 1 0 ]
-"68
+"69
 [v _SUP_ADC_management SUP_ADC_management `(v  1 e 1 0 ]
-"101
+"136
 [v _SUP_UART_management SUP_UART_management `(v  1 e 1 0 ]
-"106
+"145
 [v _f_int f_int `II(v  1 e 1 0 ]
 "18 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_adc.c
 [v _init_adc init_adc `(v  1 e 1 0 ]
 "31
 [v _ADC_chan_change ADC_chan_change `(v  1 e 1 0 ]
 "36
+[v _ADC_start_conv ADC_start_conv `(v  1 e 1 0 ]
+"42
 [v _ADC_get_value ADC_get_value `(ui  1 e 2 0 ]
 "16 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_io.c
 [v _init_io init_io `(v  1 e 1 0 ]
@@ -35,11 +39,13 @@
 [v _init_osc init_osc `(v  1 e 1 0 ]
 "16 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_trm0.c
 [v _init_tmr0 init_tmr0 `(v  1 e 1 0 ]
-"16 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_uart.c
+"19 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_uart.c
 [v _init_uart init_uart `(v  1 e 1 0 ]
+"38
+[v _UART_send UART_send `(v  1 e 1 0 ]
 "57 D:\XC8\include\pic16f688.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
-[s S248 . 1 `uc 1 RA0 1 0 :1:0 
+[s S298 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -47,8 +53,8 @@
 `uc 1 RA5 1 0 :1:5 
 ]
 "179
-[u S255 . 1 `S248 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES255  1 e 1 @5 ]
+[u S305 . 1 `S298 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES305  1 e 1 @5 ]
 [s S50 . 1 `uc 1 RAIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
@@ -66,7 +72,7 @@
 ]
 [u S64 . 1 `S50 1 . 1 0 `S59 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES64  1 e 1 @11 ]
-[s S405 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[s S112 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TXIF 1 0 :1:1 
 `uc 1 OSFIF 1 0 :1:2 
 `uc 1 C1IF 1 0 :1:3 
@@ -76,13 +82,39 @@
 `uc 1 EEIF 1 0 :1:7 
 ]
 "382
-[s S414 . 1 `uc 1 T1IF 1 0 :1:0 
+[s S121 . 1 `uc 1 T1IF 1 0 :1:0 
 ]
-[u S416 . 1 `S405 1 . 1 0 `S414 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES416  1 e 1 @12 ]
+[u S123 . 1 `S112 1 . 1 0 `S121 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES123  1 e 1 @12 ]
+[s S356 . 1 `uc 1 ABDEN 1 0 :1:0 
+`uc 1 WUE 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG16 1 0 :1:3 
+`uc 1 SCKP 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 RCIDL 1 0 :1:6 
+`uc 1 ABDOVF 1 0 :1:7 
+]
+"541
+[u S365 . 1 `S356 1 . 1 0 ]
+[v _BAUDCTLbits BAUDCTLbits `VES365  1 e 1 @17 ]
 "596
 [v _SPBRG SPBRG `VEuc  1 e 1 @19 ]
-[s S284 . 1 `uc 1 RX9D 1 0 :1:0 
+"610
+[v _TXREG TXREG `VEuc  1 e 1 @21 ]
+[s S377 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"634
+[u S386 . 1 `S377 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES386  1 e 1 @22 ]
+[s S334 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -92,11 +124,11 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "696
-[u S293 . 1 `S284 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES293  1 e 1 @23 ]
+[u S343 . 1 `S334 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES343  1 e 1 @23 ]
 "890
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
-[s S315 . 1 `uc 1 ADON 1 0 :1:0 
+[s S466 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :3:2 
 `uc 1 . 1 0 :1:5 
@@ -104,21 +136,21 @@
 `uc 1 ADFM 1 0 :1:7 
 ]
 "927
-[s S322 . 1 `uc 1 . 1 0 :1:0 
+[s S473 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
 `uc 1 CHS2 1 0 :1:4 
 ]
-[s S328 . 1 `uc 1 . 1 0 :1:0 
+[s S479 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S331 . 1 `uc 1 . 1 0 :1:0 
+[s S482 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 ]
-[u S334 . 1 `S315 1 . 1 0 `S322 1 . 1 0 `S328 1 . 1 0 `S331 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES334  1 e 1 @31 ]
-[s S160 . 1 `uc 1 PS 1 0 :3:0 
+[u S485 . 1 `S466 1 . 1 0 `S473 1 . 1 0 `S479 1 . 1 0 `S482 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES485  1 e 1 @31 ]
+[s S210 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -126,13 +158,13 @@
 `uc 1 nRAPU 1 0 :1:7 
 ]
 "1007
-[s S167 . 1 `uc 1 PS0 1 0 :1:0 
+[s S217 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 ]
-[u S171 . 1 `S160 1 . 1 0 `S167 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES171  1 e 1 @129 ]
-[s S231 . 1 `uc 1 TRISA0 1 0 :1:0 
+[u S221 . 1 `S210 1 . 1 0 `S217 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES221  1 e 1 @129 ]
+[s S281 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -140,9 +172,9 @@
 `uc 1 TRISA5 1 0 :1:5 
 ]
 "1072
-[u S238 . 1 `S231 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES238  1 e 1 @133 ]
-[s S214 . 1 `uc 1 TRISC0 1 0 :1:0 
+[u S288 . 1 `S281 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES288  1 e 1 @133 ]
+[s S264 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -150,9 +182,9 @@
 `uc 1 TRISC5 1 0 :1:5 
 ]
 "1122
-[u S221 . 1 `S214 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES221  1 e 1 @135 ]
-[s S379 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[u S271 . 1 `S264 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES271  1 e 1 @135 ]
+[s S398 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TXIE 1 0 :1:1 
 `uc 1 OSFIE 1 0 :1:2 
 `uc 1 C1IE 1 0 :1:3 
@@ -162,74 +194,114 @@
 `uc 1 EEIE 1 0 :1:7 
 ]
 "1177
-[s S388 . 1 `uc 1 T1IE 1 0 :1:0 
+[s S407 . 1 `uc 1 T1IE 1 0 :1:0 
 ]
-[u S390 . 1 `S379 1 . 1 0 `S388 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES390  1 e 1 @140 ]
-[s S129 . 1 `uc 1 SCS 1 0 :1:0 
+[u S409 . 1 `S398 1 . 1 0 `S407 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES409  1 e 1 @140 ]
+[s S179 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IOSCF 1 0 :3:4 
 ]
 "1294
-[s S135 . 1 `uc 1 . 1 0 :4:0 
+[s S185 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S140 . 1 `S129 1 . 1 0 `S135 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES140  1 e 1 @143 ]
+[u S190 . 1 `S179 1 . 1 0 `S185 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES190  1 e 1 @143 ]
 "1952
 [v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
-[s S359 . 1 `uc 1 . 1 0 :4:0 
+[s S510 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 ADCS 1 0 :3:4 
 ]
 "1976
-[s S362 . 1 `uc 1 . 1 0 :4:0 
+[s S513 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 ADCS0 1 0 :1:4 
 `uc 1 ADCS1 1 0 :1:5 
 `uc 1 ADCS2 1 0 :1:6 
 ]
-[u S367 . 1 `S359 1 . 1 0 `S362 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES367  1 e 1 @159 ]
+[u S518 . 1 `S510 1 . 1 0 `S513 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES518  1 e 1 @159 ]
 "23 E:\Git\Git\Repo\AERIS01V1.0\sources/SUP_func.c
-[v _compteur compteur `VEul  1 s 4 compteur ]
+[v _compteur compteur `VEul  1 e 4 0 ]
 [s S19 . 6 `ui 1 data 2 0 `ul 1 time 4 2 ]
 "24
-[v _anData anData `[3]S19  1 s 18 anData ]
+[v _anData anData `[3]S19  1 e 18 0 ]
+"25
+[v _emission_rdy emission_rdy `uc  1 e 1 0 ]
 "16 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_adc.c
 [v _endConv endConv `VEuc  1 e 1 0 ]
-"26 E:\Git\Git\Repo\AERIS01V1.0\sources/SUP_func.c
+"16 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_uart.c
+[v _tx_running tx_running `uc  1 e 1 0 ]
+"17
+[v _tx_data tx_data `[18]uc  1 e 18 0 ]
+"27 E:\Git\Git\Repo\AERIS01V1.0\sources/SUP_func.c
 [v _main main `(v  1 e 1 0 ]
 {
-"33
+"34
 } 0
-"53
+"54
 [v _SUP_Oper SUP_Oper `(v  1 e 1 0 ]
 {
-"55
-[v SUP_Oper@latchSequencer latchSequencer `ul  1 a 4 2 ]
-"66
+"56
+[v SUP_Oper@latchSequencer latchSequencer `ul  1 a 4 14 ]
+"67
 } 0
-"101
+"136
 [v _SUP_UART_management SUP_UART_management `(v  1 e 1 0 ]
 {
-"104
+"143
 } 0
-"68
+"38 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_uart.c
+[v _UART_send UART_send `(v  1 e 1 0 ]
+{
+[v UART_send@data data `*.4S19  1 a 1 wreg ]
+[v UART_send@data data `*.4S19  1 a 1 wreg ]
+[v UART_send@size size `uc  1 p 1 8 ]
+"40
+"38
+[v UART_send@data data `*.4S19  1 a 1 12 ]
+"46
+} 0
+"27 D:\XC8\sources\common\memcpy.c
+[v _memcpy memcpy `(*.4v  1 e 1 0 ]
+{
+[v memcpy@d1 d1 `*.4v  1 a 1 wreg ]
+"31
+[v memcpy@s s `*.4DCuc  1 a 1 6 ]
+"30
+[v memcpy@d d `*.4uc  1 a 1 5 ]
+"32
+[v memcpy@tmp tmp `uc  1 a 1 4 ]
+"27
+[v memcpy@d1 d1 `*.4v  1 a 1 wreg ]
+[v memcpy@s1 s1 `*.4DCv  1 p 1 0 ]
+[v memcpy@n n `ui  1 p 2 1 ]
+"34
+[v memcpy@d1 d1 `*.4v  1 a 1 7 ]
+"41
+} 0
+"69 E:\Git\Git\Repo\AERIS01V1.0\sources/SUP_func.c
 [v _SUP_ADC_management SUP_ADC_management `(v  1 e 1 0 ]
 {
-"70
-[v SUP_ADC_management@sequence sequence `uc  1 a 1 8 ]
-"99
+"71
+[v SUP_ADC_management@sequence sequence `uc  1 s 1 sequence ]
+"134
 } 0
 "36 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_adc.c
+[v _ADC_start_conv ADC_start_conv `(v  1 e 1 0 ]
+{
+"40
+} 0
+"42
 [v _ADC_get_value ADC_get_value `(ui  1 e 2 0 ]
 {
-"38
-[v ADC_get_value@ANvalue ANvalue `ui  1 a 2 0 ]
-"53
+"44
+[v ADC_get_value@ANvalue ANvalue `ui  1 a 2 4 ]
+"50
 } 0
 "31
 [v _ADC_chan_change ADC_chan_change `(v  1 e 1 0 ]
@@ -237,18 +309,18 @@
 [v ADC_chan_change@ANChannel ANChannel `uc  1 a 1 wreg ]
 [v ADC_chan_change@ANChannel ANChannel `uc  1 a 1 wreg ]
 "33
-[v ADC_chan_change@ANChannel ANChannel `uc  1 a 1 5 ]
+[v ADC_chan_change@ANChannel ANChannel `uc  1 a 1 1 ]
 "34
 } 0
-"35 E:\Git\Git\Repo\AERIS01V1.0\sources/SUP_func.c
+"36 E:\Git\Git\Repo\AERIS01V1.0\sources/SUP_func.c
 [v _SUP_Init SUP_Init `(v  1 e 1 0 ]
 {
-"51
+"52
 } 0
-"16 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_uart.c
+"19 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_uart.c
 [v _init_uart init_uart `(v  1 e 1 0 ]
 {
-"25
+"36
 } 0
 "16 E:\Git\Git\Repo\AERIS01V1.0\sources/SYS_trm0.c
 [v _init_tmr0 init_tmr0 `(v  1 e 1 0 ]
@@ -270,8 +342,10 @@
 {
 "29
 } 0
-"106 E:\Git\Git\Repo\AERIS01V1.0\sources/SUP_func.c
+"145 E:\Git\Git\Repo\AERIS01V1.0\sources/SUP_func.c
 [v _f_int f_int `II(v  1 e 1 0 ]
 {
-"156
+"166
+[v f_int@txState txState `uc  1 s 1 txState ]
+"194
 } 0

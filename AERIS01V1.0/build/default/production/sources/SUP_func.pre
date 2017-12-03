@@ -1218,6 +1218,41 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
+# 4 "D:\XC8\include\__size_t.h"
+typedef unsigned size_t;
+
+# 14 "D:\XC8\include\string.h"
+extern void * memcpy(void *, const void *, size_t);
+extern void * memmove(void *, const void *, size_t);
+extern void * memset(void *, int, size_t);
+
+# 36
+extern char * strcat(char *, const char *);
+extern char * strcpy(char *, const char *);
+extern char * strncat(char *, const char *, size_t);
+extern char * strncpy(char *, const char *, size_t);
+extern char * strdup(const char *);
+extern char * strtok(char *, const char *);
+
+
+extern int memcmp(const void *, const void *, size_t);
+extern int strcmp(const char *, const char *);
+extern int stricmp(const char *, const char *);
+extern int strncmp(const char *, const char *, size_t);
+extern int strnicmp(const char *, const char *, size_t);
+extern void * memchr(const void *, int, size_t);
+extern size_t strcspn(const char *, const char *);
+extern char * strpbrk(const char *, const char *);
+extern size_t strspn(const char *, const char *);
+extern char * strstr(const char *, const char *);
+extern char * stristr(const char *, const char *);
+extern char * strerror(int);
+extern size_t strlen(const char *);
+extern char * strchr(const char *, int);
+extern char * strichr(const char *, int);
+extern char * strrchr(const char *, int);
+extern char * strrichr(const char *, int);
+
 # 29 "sources/SYS_osc.h"
 void init_osc ();
 
@@ -1228,7 +1263,12 @@ void init_tmr0 ();
 void init_io ();
 
 # 29 "sources/SYS_uart.h"
+extern boolean tx_running;
+extern uint8 tx_data[];
+
+# 35
 void init_uart ();
+void UART_send(sBUF *data, uint8 size);
 
 # 36 "sources/SYS_adc.h"
 extern volatile uint8 endConv;
@@ -1237,10 +1277,12 @@ extern volatile uint8 endConv;
 void init_adc ();
 void ADC_chan_change (uint8 ANChannel);
 uint16 ADC_get_value();
+void ADC_start_conv();
 
 # 23 "sources/SUP_func.c"
-static volatile uint32 compteur = 0;
-static sBUF anData[3];
+volatile uint32 compteur = 0;
+sBUF anData[3];
+boolean emission_rdy = 0;
 
 void main(void) {
 
@@ -1266,7 +1308,7 @@ init_adc ();
 INTCONbits.GIE = 1;
 INTCONbits.PEIE = 1;
 
-TMR0 = 0xE6;
+TMR0 = 0xE6;;
 }
 
 void SUP_Oper()
@@ -1286,50 +1328,117 @@ SUP_UART_management();
 
 void SUP_ADC_management ()
 {
-uint8 sequence = 0;
+static uint8 sequence = 0;
 
-switch(sequence++)
+if(!emission_rdy)
+{
+switch(sequence)
 {
 case 0:
-anData[0].time = compteur;
-anData[0].data = ADC_get_value();
-ADC_chan_change(0b101);
+ADC_start_conv();
+sequence++;
 break;
 
 case 1:
-anData[1].time = compteur;
-anData[1].data = ADC_get_value();
-ADC_chan_change(0b110);
+if(endConv)
+{
+endConv = 0;
+anData[0].time = compteur;
+anData[0].data = ADC_get_value();
+ADC_chan_change(0b101);
+sequence++;
+}
 break;
 
 case 2:
-anData[2].time = compteur;
-anData[2].data = ADC_get_value();
-ADC_chan_change(0b100);
+ADC_start_conv();
+sequence++;
 break;
 
 case 3:
+if(endConv)
+{
+endConv = 0;
+anData[1].time = compteur;
+anData[1].data = ADC_get_value();
+ADC_chan_change(0b110);
+sequence++;
+}
+break;
 
+case 4:
+ADC_start_conv();
+sequence++;
+break;
+
+case 5:
+if(endConv)
+{
+endConv = 0;
+anData[2].time = compteur;
+anData[2].data = ADC_get_value();
+ADC_chan_change(0b100);
+sequence++;
+}
+break;
+
+case 6:
+emission_rdy = 1;
+sequence = 0;
 break;
 
 default:
 sequence = 0;
 }
 }
+}
 
 void SUP_UART_management ()
 {
-
+if(emission_rdy && !tx_running)
+{
+emission_rdy = 0;
+UART_send(anData, sizeof(anData));
+}
 }
 
 void interrupt f_int(void)
 {
 if(INTCONbits.T0IF)
 {
-TMR0 = 0xE6;
+TMR0 = 0xE6;;
 INTCONbits.T0IF = 0;
 compteur++;
 }
+if(PIR1bits.ADIF)
+{
+endConv = 1;
+PIR1bits.ADIF = 0;
+}
 
-# 156
+# 164
+if(PIR1bits.TXIF && tx_running)
+{
+static uint8 txState = 0;
+
+PIR1bits.TXIF = 0;
+if(txState++ < 17)
+{
+if(tx_data[17-txState] < 0xFF)
+TXREG = tx_data[17-txState];
+else
+TXREG = 0xFE;
+}
+else if(txState == 18)
+{
+TXREG = 0xFF;
+}
+
+# 188
+else
+{
+tx_running = 0;
+txState = 0;
+}
+}
 }

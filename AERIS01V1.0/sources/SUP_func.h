@@ -60,9 +60,9 @@ typedef struct
     uint16 data;
     uint32 time;
 }sBUF;
-
 #define TRUE 1
 #define FALSE 0
+#define TMR0_reload() TMR0 = 0xE6;
 
 /**************************************
  Global variables                  
@@ -80,6 +80,7 @@ void SUP_UART_management();
  Includes               
 **************************************/
 #include <xc.h>
+#include <string.h>
 #include "SYS_osc.h"
 #include "SYS_tmr0.h"
 #include "SYS_io.h"

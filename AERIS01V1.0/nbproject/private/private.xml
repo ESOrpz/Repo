@@ -3,7 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/Git/Git/Repo/AERIS01V1.0/sources/SYS_uart.h</file>
+            <file>file:/E:/Git/Git/Repo/AERIS01V1.0/sources/SYS_adc.c</file>
+            <file>file:/E:/Git/Git/Repo/AERIS01V1.0/sources/SYS_adc.h</file>
+            <file>file:/E:/Git/Git/Repo/AERIS01V1.0/sources/SYS_tmr0.h</file>
+            <file>file:/E:/Git/Git/Repo/AERIS01V1.0/sources/SUP_func.h</file>
+            <file>file:/E:/Git/Git/Repo/AERIS01V1.0/sources/SYS_uart.c</file>
             <file>file:/E:/Git/Git/Repo/AERIS01V1.0/sources/SUP_func.c</file>
+            <file>file:/E:/Git/Git/Repo/AERIS01V1.0/sources/SYS_trm0.c</file>
+            <file>file:/E:/Git/Git/Repo/AERIS01V1.0/sources/SYS_io.c</file>
         </group>
     </open-files>
 </project-private>

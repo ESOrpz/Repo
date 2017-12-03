@@ -921,14 +921,45 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
+[; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
+[; ;string.h: 16: extern void * memset(void *, int, size_t);
+[; ;string.h: 36: extern char * strcat(char *, const char *);
+[; ;string.h: 37: extern char * strcpy(char *, const char *);
+[; ;string.h: 38: extern char * strncat(char *, const char *, size_t);
+[; ;string.h: 39: extern char * strncpy(char *, const char *, size_t);
+[; ;string.h: 40: extern char * strdup(const char *);
+[; ;string.h: 41: extern char * strtok(char *, const char *);
+[; ;string.h: 44: extern int memcmp(const void *, const void *, size_t);
+[; ;string.h: 45: extern int strcmp(const char *, const char *);
+[; ;string.h: 46: extern int stricmp(const char *, const char *);
+[; ;string.h: 47: extern int strncmp(const char *, const char *, size_t);
+[; ;string.h: 48: extern int strnicmp(const char *, const char *, size_t);
+[; ;string.h: 49: extern void * memchr(const void *, int, size_t);
+[; ;string.h: 50: extern size_t strcspn(const char *, const char *);
+[; ;string.h: 51: extern char * strpbrk(const char *, const char *);
+[; ;string.h: 52: extern size_t strspn(const char *, const char *);
+[; ;string.h: 53: extern char * strstr(const char *, const char *);
+[; ;string.h: 54: extern char * stristr(const char *, const char *);
+[; ;string.h: 55: extern char * strerror(int);
+[; ;string.h: 56: extern size_t strlen(const char *);
+[; ;string.h: 57: extern char * strchr(const char *, int);
+[; ;string.h: 58: extern char * strichr(const char *, int);
+[; ;string.h: 59: extern char * strrchr(const char *, int);
+[; ;string.h: 60: extern char * strrichr(const char *, int);
 [; ;SYS_osc.h: 29: void init_osc ();
 [; ;SYS_tmr0.h: 29: void init_tmr0 ();
 [; ;SYS_io.h: 29: void init_io ();
-[; ;SYS_uart.h: 29: void init_uart ();
+[; ;SYS_uart.h: 29: extern boolean tx_running;
+[; ;SYS_uart.h: 30: extern uint8 tx_data[];
+[; ;SYS_uart.h: 35: void init_uart ();
+[; ;SYS_uart.h: 36: void UART_send(sBUF *data, uint8 size);
 [; ;SYS_adc.h: 36: extern volatile uint8 endConv;
 [; ;SYS_adc.h: 41: void init_adc ();
 [; ;SYS_adc.h: 42: void ADC_chan_change (uint8 ANChannel);
 [; ;SYS_adc.h: 43: uint16 ADC_get_value();
+[; ;SYS_adc.h: 44: void ADC_start_conv();
 "16 sources/SYS_adc.c
 [v _endConv `Vuc ~T0 @X0 1 e ]
 [i _endConv
@@ -990,54 +1021,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 88 ]
 }
 "36
-[v _ADC_get_value `(ui ~T0 @X0 1 ef ]
+[v _ADC_start_conv `(v ~T0 @X0 1 ef ]
 "37
 {
-[; ;SYS_adc.c: 36: uint16 ADC_get_value()
+[; ;SYS_adc.c: 36: void ADC_start_conv()
 [; ;SYS_adc.c: 37: {
+[e :U _ADC_start_conv ]
+[f ]
+[; ;SYS_adc.c: 38: PIR1bits.ADIF = 0;
+"38
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+[; ;SYS_adc.c: 39: ADCON0bits.GO = 1;
+"39
+[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
+[; ;SYS_adc.c: 40: }
+"40
+[e :UE 89 ]
+}
+"42
+[v _ADC_get_value `(ui ~T0 @X0 1 ef ]
+"43
+{
+[; ;SYS_adc.c: 42: uint16 ADC_get_value()
+[; ;SYS_adc.c: 43: {
 [e :U _ADC_get_value ]
 [f ]
-"38
+"44
 [v _ANvalue `ui ~T0 @X0 1 a ]
-[; ;SYS_adc.c: 38: uint16 ANvalue = 0;
+[; ;SYS_adc.c: 44: uint16 ANvalue = 0;
 [e = _ANvalue -> -> 0 `i `ui ]
-[; ;SYS_adc.c: 40: if(endConv)
-"40
-[e $ ! != -> _endConv `i -> -> -> 0 `i `Vuc `i 90  ]
-[; ;SYS_adc.c: 41: {
-"41
-{
-[; ;SYS_adc.c: 42: ANvalue = ADRESL;
-"42
-[e = _ANvalue -> _ADRESL `ui ]
-[; ;SYS_adc.c: 43: ANvalue += (ADRESH << 8);
-"43
-[e =+ _ANvalue -> << -> _ADRESH `i -> 8 `i `ui ]
-"45
-}
-[; ;SYS_adc.c: 45: }
-[e $U 91  ]
+[; ;SYS_adc.c: 46: ANvalue = ADRESL;
 "46
-[e :U 90 ]
-[; ;SYS_adc.c: 46: else
-[; ;SYS_adc.c: 47: {
+[e = _ANvalue -> _ADRESL `ui ]
+[; ;SYS_adc.c: 47: ANvalue += (ADRESH << 8);
 "47
-{
-[; ;SYS_adc.c: 48: PIR1bits.ADIF = 0;
-"48
-[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
-[; ;SYS_adc.c: 49: ADCON0bits.GO = 1;
+[e =+ _ANvalue -> << -> _ADRESH `i -> 8 `i `ui ]
+[; ;SYS_adc.c: 49: return ANvalue;
 "49
-[e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
-"50
-}
-[e :U 91 ]
-[; ;SYS_adc.c: 50: }
-[; ;SYS_adc.c: 52: return ANvalue;
-"52
 [e ) _ANvalue ]
-[e $UE 89  ]
-[; ;SYS_adc.c: 53: }
-"53
-[e :UE 89 ]
+[e $UE 90  ]
+[; ;SYS_adc.c: 50: }
+"50
+[e :UE 90 ]
 }
