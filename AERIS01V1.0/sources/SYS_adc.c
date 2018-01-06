@@ -33,21 +33,18 @@ void ADC_chan_change(uint8 ANChannel)
     ADCON0bits.CHS = ANChannel;
 }
 
+void ADC_start_conv()
+{
+    PIR1bits.ADIF = 0;
+    ADCON0bits.GO = 1;
+}
+
 uint16 ADC_get_value()
 {
     uint16 ANvalue = 0;
     
-    if(endConv) //A REVOIR !!
-    {
-        ANvalue = ADRESL;
-        ANvalue += (ADRESH << 8);
-        //endConv = FALSE;
-    }
-    else
-    {
-        PIR1bits.ADIF = 0;
-        ADCON0bits.GO = 1;
-    }
+    ANvalue = ADRESL;
+    ANvalue += (ADRESH << 8);
     
     return ANvalue;
 }

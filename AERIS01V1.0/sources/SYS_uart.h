@@ -24,9 +24,16 @@ extern "C" {
 #include "SUP_func.h"
     
 /**************************************
+ Global variables                  
+**************************************/
+extern boolean tx_running;
+extern uint8 tx_data[];
+    
+/**************************************
  Global functions               
 **************************************/
 void init_uart ();
+void UART_send(sBUF *data, uint8 size);
 
 #ifdef	__cplusplus
 }

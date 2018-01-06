@@ -41,6 +41,7 @@ extern volatile uint8 endConv;
 void init_adc ();
 void ADC_chan_change (uint8 ANChannel);
 uint16 ADC_get_value();
+void ADC_start_conv();
 
 #ifdef	__cplusplus
 }

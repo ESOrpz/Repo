@@ -20,8 +20,9 @@
 
 #include "SUP_func.h"
 
-static volatile uint32 compteur = 0;
-static sBUF anData[3];
+volatile uint32 compteur = 0;
+sBUF anData[3];
+boolean emission_rdy = FALSE;
 
 void main(void) {
     
@@ -47,7 +48,7 @@ void SUP_Init()
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
     
-    TMR0 = 0xE6; //En faire une fonction dans SYS_tmr0.c
+    TMR0_reload();
 }
 
 void SUP_Oper()
@@ -67,90 +68,127 @@ void SUP_Oper()
 
 void SUP_ADC_management ()
 {
-    uint8 sequence = 0;
+    static uint8 sequence = 0;
     
-    switch(sequence++)
+    if(!emission_rdy)
     {
-        case 0:
-            anData[0].time = compteur;
-            anData[0].data = ADC_get_value();
-            ADC_chan_change(AN5);
-            break;
+        switch(sequence)
+        {
+            case 0:
+                ADC_start_conv();
+                sequence++;
+                break;
 
-        case 1:
-            anData[1].time = compteur;
-            anData[1].data = ADC_get_value();
-            ADC_chan_change(AN6);
-            break;
+            case 1:
+                if(endConv)
+                {
+                    endConv = FALSE;
+                    anData[0].time = compteur;
+                    anData[0].data = ADC_get_value();
+                    ADC_chan_change(AN5);
+                    sequence++;
+                }
+                break;
 
-        case 2:
-            anData[2].time = compteur;
-            anData[2].data = ADC_get_value();
-            ADC_chan_change(AN4);
-            break;
+            case 2:
+                ADC_start_conv();
+                sequence++;
+                break;
 
-        case 3:
-            //send();
-            break;
+            case 3:
+                if(endConv)
+                {
+                    endConv = FALSE;
+                    anData[1].time = compteur;
+                    anData[1].data = ADC_get_value();
+                    ADC_chan_change(AN6);
+                    sequence++;
+                }
+                break;
 
-        default:
-            sequence = 0;
+            case 4:
+                ADC_start_conv();
+                sequence++;
+                break;
+
+            case 5:
+                if(endConv)
+                {
+                    endConv = FALSE;
+                    anData[2].time = compteur;
+                    anData[2].data = ADC_get_value();
+                    ADC_chan_change(AN4);
+                    sequence++;
+                }
+                break;
+
+            case 6:
+                emission_rdy = TRUE;
+                sequence = 0;
+                break;
+
+            default:
+                sequence = 0;
+        }
     }
 }
 
 void SUP_UART_management ()
 {
-    
+    if(emission_rdy && !tx_running)
+    {
+        emission_rdy = FALSE;
+        UART_send(anData, sizeof(anData));
+    }
 }
 
 void interrupt f_int(void)
 {
     if(INTCONbits.T0IF)
     {
-        TMR0 = 0xE6; //En faire une fonction dans SYS_tmr0.c
+        TMR0_reload();
         INTCONbits.T0IF = 0;
         compteur++;
     }
-    /*if(PIR1bits.ADIF)
+    if(PIR1bits.ADIF)
     {
         endConv = TRUE;
         PIR1bits.ADIF = 0;
     }
-    if(PIR1bits.RCIF)
+    /*if(PIR1bits.RCIF)
     {
         msg = RCREG;
         msgReceived = TRUE;
         PIR1bits.RCIF = 0;
-    }
-    if(PIR1bits.TXIF)
+    }*/
+    if(PIR1bits.TXIF && tx_running)
     {
         static uint8 txState = 0;
         
         PIR1bits.TXIF = 0;
         if(txState++ < 17)
         {
-            TXREG = txData[17-txState];
+            if(tx_data[17-txState] < 0xFF)
+                TXREG = tx_data[17-txState];
+            else
+                TXREG = 0xFE;
         }
         else if(txState == 18)
         {
-            TXREG = 0x42;
+            TXREG = 0xFF;
         }
-        else if(txState == 18)
+        /*else if(txState == 18)
         {
             TXREG = '\r';
         }
         else if(txState == 19)
         {
             TXREG = '\n';
-        }
+        }*/
         else
         {
-            TXSTAbits.TXEN = 0;
-            PIE1bits.T1IE = 0;
-            PIE1bits.RCIE = 1;
-            RCSTAbits.CREN = 1;
-            txRunning = FALSE;
+            tx_running = FALSE;
             txState = 0;
         }
-    }*/
+    }
 }

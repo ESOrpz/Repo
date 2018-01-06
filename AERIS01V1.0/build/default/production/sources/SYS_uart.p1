@@ -9,6 +9,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _RCSTAbits `VS27 ~T0 @X0 0 e@23 ]
 "596
 [v _SPBRG `Vuc ~T0 @X0 0 e@19 ]
+"530
+[s S22 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S22 . ABDEN WUE . BRG16 SCKP . RCIDL ABDOVF ]
+"529
+[u S21 `S22 1 ]
+[n S21 . . ]
+"541
+[v _BAUDCTLbits `VS21 ~T0 @X0 0 e@17 ]
+"623
+[s S26 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S26 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
+"622
+[u S25 `S26 1 ]
+[n S25 . . ]
+"634
+[v _TXSTAbits `VS25 ~T0 @X0 0 e@22 ]
+"1163
+[s S50 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S50 . TMR1IE TXIE OSFIE C1IE C2IE RCIE ADIE EEIE ]
+"1173
+[s S51 :1 `uc 1 ]
+[n S51 . T1IE ]
+"1162
+[u S49 `S50 1 `S51 1 ]
+[n S49 . . . ]
+"1177
+[v _PIE1bits `VS49 ~T0 @X0 0 e@140 ]
+"59 sources/SUP_func.h
+[s S1 `ui 1 `ul 1 ]
+[n S1 . data time ]
+"14 D:\XC8\include\string.h
+[v _memcpy `(*v ~T0 @X0 0 ef3`*v`*Cv`ui ]
+"610 D:\XC8\include\pic16f688.h
+[v _TXREG `Vuc ~T0 @X0 0 e@21 ]
 "24 sources/SUP_func.h
 [p x FOSC=INTOSCIO ]
 "25
@@ -877,6 +911,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
+[; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
+[; ;string.h: 16: extern void * memset(void *, int, size_t);
+[; ;string.h: 36: extern char * strcat(char *, const char *);
+[; ;string.h: 37: extern char * strcpy(char *, const char *);
+[; ;string.h: 38: extern char * strncat(char *, const char *, size_t);
+[; ;string.h: 39: extern char * strncpy(char *, const char *, size_t);
+[; ;string.h: 40: extern char * strdup(const char *);
+[; ;string.h: 41: extern char * strtok(char *, const char *);
+[; ;string.h: 44: extern int memcmp(const void *, const void *, size_t);
+[; ;string.h: 45: extern int strcmp(const char *, const char *);
+[; ;string.h: 46: extern int stricmp(const char *, const char *);
+[; ;string.h: 47: extern int strncmp(const char *, const char *, size_t);
+[; ;string.h: 48: extern int strnicmp(const char *, const char *, size_t);
+[; ;string.h: 49: extern void * memchr(const void *, int, size_t);
+[; ;string.h: 50: extern size_t strcspn(const char *, const char *);
+[; ;string.h: 51: extern char * strpbrk(const char *, const char *);
+[; ;string.h: 52: extern size_t strspn(const char *, const char *);
+[; ;string.h: 53: extern char * strstr(const char *, const char *);
+[; ;string.h: 54: extern char * stristr(const char *, const char *);
+[; ;string.h: 55: extern char * strerror(int);
+[; ;string.h: 56: extern size_t strlen(const char *);
+[; ;string.h: 57: extern char * strchr(const char *, int);
+[; ;string.h: 58: extern char * strichr(const char *, int);
+[; ;string.h: 59: extern char * strrchr(const char *, int);
+[; ;string.h: 60: extern char * strrichr(const char *, int);
 [; ;SYS_osc.h: 29: void init_osc ();
 [; ;SYS_tmr0.h: 29: void init_tmr0 ();
 [; ;SYS_io.h: 29: void init_io ();
@@ -884,22 +945,83 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SYS_adc.h: 41: void init_adc ();
 [; ;SYS_adc.h: 42: void ADC_chan_change (uint8 ANChannel);
 [; ;SYS_adc.h: 43: uint16 ADC_get_value();
-[; ;SYS_uart.h: 29: void init_uart ();
+[; ;SYS_adc.h: 44: void ADC_start_conv();
+[; ;SYS_uart.h: 29: extern boolean tx_running;
+[; ;SYS_uart.h: 30: extern uint8 tx_data[];
+[; ;SYS_uart.h: 35: void init_uart ();
+[; ;SYS_uart.h: 36: void UART_send(sBUF *data, uint8 size);
 "16 sources/SYS_uart.c
-[v _init_uart `(v ~T0 @X0 1 ef ]
+[v _tx_running `uc ~T0 @X0 1 e ]
+[i _tx_running
+-> -> 0 `i `uc
+]
+[; ;SYS_uart.c: 16: boolean tx_running = 0;
 "17
+[v _tx_data `uc ~T0 @X0 -> 18 `i e ]
+[; ;SYS_uart.c: 17: uint8 tx_data[18];
+"19
+[v _init_uart `(v ~T0 @X0 1 ef ]
+"20
 {
-[; ;SYS_uart.c: 16: void init_uart ()
-[; ;SYS_uart.c: 17: {
+[; ;SYS_uart.c: 19: void init_uart ()
+[; ;SYS_uart.c: 20: {
 [e :U _init_uart ]
 [f ]
-[; ;SYS_uart.c: 18: RCSTAbits.SPEN = 1;
-"18
+[; ;SYS_uart.c: 29: RCSTAbits.SPEN = 1;
+"29
 [e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
-[; ;SYS_uart.c: 19: SPBRG = 0x0C;
-"19
-[e = _SPBRG -> -> 12 `i `uc ]
-[; ;SYS_uart.c: 25: }
-"25
+[; ;SYS_uart.c: 30: SPBRG = 0x10;
+"30
+[e = _SPBRG -> -> 16 `i `uc ]
+[; ;SYS_uart.c: 31: BAUDCTLbits.BRG16 = 1;
+"31
+[e = . . _BAUDCTLbits 0 3 -> -> 1 `i `uc ]
+[; ;SYS_uart.c: 32: TXSTAbits.BRGH = 1;
+"32
+[e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
+[; ;SYS_uart.c: 34: PIE1bits.T1IE = 1;
+"34
+[e = . . _PIE1bits 1 0 -> -> 1 `i `uc ]
+[; ;SYS_uart.c: 35: TXSTAbits.TXEN = 1;
+"35
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+[; ;SYS_uart.c: 36: }
+"36
 [e :UE 87 ]
+}
+"38
+[v _UART_send `(v ~T0 @X0 1 ef2`*S1`uc ]
+"39
+{
+[; ;SYS_uart.c: 38: void UART_send(sBUF *data, uint8 size)
+[; ;SYS_uart.c: 39: {
+[e :U _UART_send ]
+"38
+[v _data `*S1 ~T0 @X0 1 r1 ]
+[v _size `uc ~T0 @X0 1 r2 ]
+"39
+[f ]
+[; ;SYS_uart.c: 40: memcpy(tx_data,data,size);
+"40
+[e ( _memcpy (3 , , -> &U _tx_data `*v -> _data `*Cv -> _size `ui ]
+[; ;SYS_uart.c: 41: if(tx_data[17] < 0xFF)
+"41
+[e $ ! < -> *U + &U _tx_data * -> -> -> 17 `i `ui `ux -> -> # *U &U _tx_data `ui `ux `i -> 255 `i 89  ]
+[; ;SYS_uart.c: 42: TXREG = tx_data[17];
+"42
+[e = _TXREG *U + &U _tx_data * -> -> -> 17 `i `ui `ux -> -> # *U &U _tx_data `ui `ux ]
+[e $U 90  ]
+"43
+[e :U 89 ]
+[; ;SYS_uart.c: 43: else
+[; ;SYS_uart.c: 44: TXREG = 0xFE;
+"44
+[e = _TXREG -> -> 254 `i `uc ]
+[e :U 90 ]
+[; ;SYS_uart.c: 45: tx_running = 1;
+"45
+[e = _tx_running -> -> 1 `i `uc ]
+[; ;SYS_uart.c: 46: }
+"46
+[e :UE 88 ]
 }
